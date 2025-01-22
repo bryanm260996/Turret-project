@@ -12,3 +12,6 @@ numbers= b"1,3,4,5,3,2\n"
 tx_msg = numbers
 ser.write(tx_msg)
 
+#receive message to pico
+msg_from_pico= ser.readline()
+print(msg_from_pico)
