@@ -54,12 +54,12 @@ def pan_left():
 
 def tilt_up():
     set_speed(tilt_servo, tilt_servo2, -1)  # Full speed up
-    time.sleep(0.5)  # Short action
+    time.sleep(0.1)  # Short action
     set_speed(tilt_servo, tilt_servo2, 0)  # Stop
 
 def tilt_down():
     set_speed(tilt_servo, tilt_servo2, 1)  # Full speed down
-    time.sleep(0.5)  # Short action
+    time.sleep(0.1)  # Short action
     set_speed(tilt_servo, tilt_servo2, 0)  # Stop
 
 # Main loop for input control
