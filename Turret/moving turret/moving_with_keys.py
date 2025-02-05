@@ -1,6 +1,7 @@
 from machine import PWM, Pin
 import time
 
+
 # Define GPIO pins for the pan motor
 PAN_PIN_1 = 9  
 PAN_PIN_2 = 10

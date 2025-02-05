@@ -44,22 +44,22 @@ class MovingTurret:
 
     def pan_right(self):
         self.set_speed(self.pan_servo, self.pan_servo2, -1)  # Full speed left
-        time.sleep(0.25)  # Run for 1 second
+        time.sleep(1)  # Run for 1 second
         self.set_speed(self.pan_servo, self.pan_servo2, 0)   # Stop
 
     def pan_left(self):
         self.set_speed(self.pan_servo, self.pan_servo2, 1)  # Full speed right
-        time.sleep(0.25)  # Run for 1 second
+        time.sleep(1)  # Run for 1 second
         self.set_speed(self.pan_servo, self.pan_servo2, 0)  # Stop
 
     def tilt_down(self):
         self.set_speed(self.tilt_servo, self.tilt_servo2, 1)  # Full speed up
-        time.sleep(0.25)  # Run for 1 second
+        time.sleep(1)  # Run for 1 second
         self.set_speed(self.tilt_servo, self.tilt_servo2, 0)  # Stop
 
     def tilt_up(self):
         self.set_speed(self.tilt_servo, self.tilt_servo2, -1)  # Full speed down
-        time.sleep(0.25)  # Run for 1 second
+        time.sleep(1)  # Run for 1 second
         self.set_speed(self.tilt_servo, self.tilt_servo2, 0)  # Stop
 
 # Example usage:

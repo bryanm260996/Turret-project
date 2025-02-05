@@ -3,10 +3,11 @@ import time
 from moving_functions import MovingTurret
 from accelerometer_function import accelerometer_data
 from bno055 import *
-import ttyacm
 
-#initialize comms
-tty= ttyacm.open(1)
+
+
+file= 'yaw_and_pitch_data.txt'
+file_work= open(file, 'a')
 
 # Initialize turret and IMU
 turret = MovingTurret(pan_pin_1=9, pan_pin_2=10, tilt_pin_1=12, tilt_pin_2=13)
@@ -19,11 +20,6 @@ def get_accelerometer_data(imu):
     if euler_data:
         print(f'Yaw {euler_data[0]:4.0f}  Pitch {euler_data[2]:4.0f}')
     return euler_data
-
-#def log_data_to_file(yaw, pitch):
-    #with open("yaw_pitch_log.txt", "a") as file:
-        #file.write(f"Yaw: {yaw}, Pitch: {pitch}\n")
-        #print(f"Logged data: Yaw={yaw}, Pitch={pitch}")
 
 def main_loop():
     """
@@ -55,11 +51,12 @@ def main_loop():
             
             if euler_data:
                 yaw, pitch = euler_data[0], euler_data[2]
-                timestamp=time.time()
-                # Log yaw and pitch data to the file
                 # Add logic to adjust turret movement based on the IMU data if needed
-                print(f"Sending IMU data: Time:{timestamp} Yaw={yaw}, Pitch={pitch}")
-                tty.print(f'{timestamp},{yaw},{pitch}')
+                print(f"Processing IMU data: Yaw={yaw}, Pitch={pitch}")
+                file_work.write(f'yaw:{yaw}, pitch:{pitch}')
+                file_work.flush()
+
+
 
     except KeyboardInterrupt:
         print("\nFinalizing program...")
@@ -68,3 +65,5 @@ def main_loop():
 
 # Run the main loop
 main_loop()
+file_work.close()
+
