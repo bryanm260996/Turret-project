@@ -6,7 +6,7 @@ def log_data_to_file(timestamp, yaw, pitch):
     """
     Logs timestamp, yaw, and pitch data into a file.
     """
-    with open("yaw_log_euler.txt", "a") as file:
+    with open("yaw_pitch_log.txt", "a") as file:
         file.write(f"Timestamp: {timestamp}, Yaw: {yaw}, Pitch: {pitch}\n")
         print(f"Logged data: Timestamp={timestamp}, Yaw={yaw}, Pitch={pitch}")
 

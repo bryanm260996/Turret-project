@@ -33,10 +33,10 @@ def set_speed(pwm1, pwm2, speed):
     speed = max(min(speed, 1.0), -1.0)  # Clamp speed between -1.0 and 1.0
 
     if speed > 0:
-        pwm1.duty_u16(int(speed * 65535))
+        pwm1.duty_u16(int(speed * 65500))
         pwm2.duty_u16(0)
     elif speed < 0:
-        pwm2.duty_u16(int(-speed * 65535))
+        pwm2.duty_u16(int(-speed * 65500))
         pwm1.duty_u16(0)
     else:
         pwm1.duty_u16(0)
@@ -45,22 +45,22 @@ def set_speed(pwm1, pwm2, speed):
 # Movement functions
 def pan_right():
     set_speed(pan_servo, pan_servo2, -1)  # Full speed right
-    time.sleep(0.5)  # Short action
+    time.sleep(0.1)  # Short action
     set_speed(pan_servo, pan_servo2, 0)   # Stop
 
 def pan_left():
     set_speed(pan_servo, pan_servo2, 1)  # Full speed left
-    time.sleep(0.5)  # Short action
+    time.sleep(1)  # Short action
     set_speed(pan_servo, pan_servo2, 0)  # Stop
 
 def tilt_up():
     set_speed(tilt_servo, tilt_servo2, -1)  # Full speed up
-    time.sleep(0.5)  # Short action
+    time.sleep(1)  # Short action
     set_speed(tilt_servo, tilt_servo2, 0)  # Stop
 
 def tilt_down():
     set_speed(tilt_servo, tilt_servo2, 1)  # Full speed down
-    time.sleep(0.5)  # Short action
+    time.sleep(0.1)  # Short action
     set_speed(tilt_servo, tilt_servo2, 0)  # Stop
 
 # Main loop for input control

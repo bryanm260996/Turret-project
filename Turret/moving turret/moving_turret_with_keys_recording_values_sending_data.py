@@ -35,6 +35,17 @@ def main_loop():
         imu = BNO055(i2c)
 
         while True:
+                        # Get and display accelerometer data
+            euler_data = get_accelerometer_data(imu)
+            
+            if euler_data:
+                yaw, pitch = euler_data[0], euler_data[2]
+                timestamp=time.time()
+                # Log yaw and pitch data to the file
+                # Add logic to adjust turret movement based on the IMU data if needed
+                print(f"Sending IMU data: Time:{timestamp} Yaw={yaw}, Pitch={pitch}")
+                tty.print(f'{timestamp},{yaw},{pitch}')
+                
             command = input("Enter command: ").strip().lower()
             if command == 'a':
                 turret.pan_left()
@@ -50,16 +61,7 @@ def main_loop():
             else:
                 print("Invalid command. Use 'a', 'd', 'w', 's', or 'q'.")
 
-            # Get and display accelerometer data
-            euler_data = get_accelerometer_data(imu)
-            
-            if euler_data:
-                yaw, pitch = euler_data[0], euler_data[2]
-                timestamp=time.time()
-                # Log yaw and pitch data to the file
-                # Add logic to adjust turret movement based on the IMU data if needed
-                print(f"Sending IMU data: Time:{timestamp} Yaw={yaw}, Pitch={pitch}")
-                tty.print(f'{timestamp},{yaw},{pitch}')
+
 
     except KeyboardInterrupt:
         print("\nFinalizing program...")
