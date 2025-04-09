@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 3
+names: ['Orange', 'Red', 'Yellow']
+
+roboflow:
+  workspace: ew309turret
+  project: my-first-project-duhvr
+  version: 2
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/ew309turret/my-first-project-duhvr/dataset/2
